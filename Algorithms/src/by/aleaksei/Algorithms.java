@@ -1,6 +1,8 @@
 package by.aleaksei;
 
-// A class that outputs the results of algorithms.
+/*A class that outputs the results of algorithms.
+
+ */
 
 public class Algorithms {
 
