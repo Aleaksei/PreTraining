@@ -4,11 +4,19 @@ package by.aleaksei;
 
 public class Algorithms {
 
+    public static final int MASS_CALCULATOR_PARAMETER_1 = 1;
+    public static final int MASS_CALCULATOR_PARAMETER_2 = 2;
+    public static final int MASS_CALCULATOR_PARAMETER_3 = 3;
+    public static final int MEAN_PARAMETER_1 = 1;
+    public static final int MEAN_PARAMETER_2 = 2;
+    public static final int SUM_PARAMETER_1 = 1;
+    public static final int MULTIPLIER_PARAMETER_2 = 2;
+
     public static void massDinosaur(int mass) {
 
-        long massTons = AlgorithmsHelper.massCalculator(mass, 1),
-                massGrams = AlgorithmsHelper.massCalculator(mass, 2),
-                massMilligrams = AlgorithmsHelper.massCalculator(mass, 3);
+        long massTons = AlgorithmsHelper.massCalculator(mass, MASS_CALCULATOR_PARAMETER_1),
+                massGrams = AlgorithmsHelper.massCalculator(mass, MASS_CALCULATOR_PARAMETER_2),
+                massMilligrams = AlgorithmsHelper.massCalculator(mass, MASS_CALCULATOR_PARAMETER_3);
         System.out.printf("\ndinosaur weight in kilograms: %d, in tons: %d, in grams: %d, in milligrams: %d.\n",
                 mass, massTons, massGrams, massMilligrams);
     }
@@ -22,9 +30,9 @@ public class Algorithms {
 
     public static void swapA_B(int a, int b) {
         System.out.printf("%d and %d --> ", a, b);
-        a -= b;
-        b += a;
-        a = b - a;
+//        a -= b;
+//        b += a;
+        a = (b += (a -= b)) - a;
         System.out.printf("%d and %d.\n", a, b);
     }
 
@@ -35,14 +43,14 @@ public class Algorithms {
     }
 
     public static void numberSumAndMultiplier(int number) {
-        int numberSum = AlgorithmsHelper.numberSumAndMultiplierCalculator(number, 1),
-                numberMultiplier = AlgorithmsHelper.numberSumAndMultiplierCalculator(number, 2);
+        int numberSum = AlgorithmsHelper.numberSumAndMultiplierCalculator(number, SUM_PARAMETER_1),
+                numberMultiplier = AlgorithmsHelper.numberSumAndMultiplierCalculator(number, MULTIPLIER_PARAMETER_2);
         System.out.printf("The number %d: sum: %d, multiplier: %d.\n", number, numberSum, numberMultiplier);
     }
 
     public static void numberMean(int number) {
-        double meanArithmetic = AlgorithmsHelper.numberMeanCalculator(number, 1),
-                meanGeometric = AlgorithmsHelper.numberMeanCalculator(number, 2);
+        double meanArithmetic = AlgorithmsHelper.numberMeanCalculator(number, MEAN_PARAMETER_1),
+                meanGeometric = AlgorithmsHelper.numberMeanCalculator(number, MEAN_PARAMETER_2);
         System.out.printf("The number %d: arithmetic mean: %f, geometric mean: %f.\n",
                 number, meanArithmetic, meanGeometric);
     }
@@ -56,12 +64,14 @@ public class Algorithms {
 //A class that implements the algorithms themselves
 class AlgorithmsHelper {
 
+    public static final int CONVECTOR_PARAMETER = 1000;
+
     static long massCalculator(int mass, int chooseType) {
-        return (chooseType == 1) ? mass / 1000 : (chooseType == 2) ? mass * 1000 : (long) mass * 1000000;
+        return (chooseType == 1) ? mass / CONVECTOR_PARAMETER : (chooseType == 2) ? mass * CONVECTOR_PARAMETER : (long) mass * CONVECTOR_PARAMETER * CONVECTOR_PARAMETER;
     }
 
     static double areaCalculator(int r1, int r2) {
-        double area = 0.;
+        double area;
         area = Math.PI * r1 * r1 - Math.PI * r2 * r2;
         return area;
     }
@@ -113,7 +123,7 @@ class AlgorithmsHelper {
                 element_7 = number - element_1 * 1000000 - element_2 * 100000 - element_3 * 10000 - element_4 * 1000 -
                         element_5 * 100 - element_6 * 10;
 
-        return (int) (element_7 * 1000000 + element_6 * 100000 + element_5 * 10000 +
+        return (element_7 * 1000000 + element_6 * 100000 + element_5 * 10000 +
                 element_4 * 1000 + element_3 * 100 + element_2 * 10 + element_1);
     }
 }
