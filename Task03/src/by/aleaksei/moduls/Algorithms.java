@@ -1,6 +1,19 @@
 package by.aleaksei.moduls;
 
 public class Algorithms {
+    public static final String FUNNY = ":)";
+    public static final String EMBARRASSMENT = "(*^.^*)";
+    public static final String VERY_TIRED = "(G_G)";
+    public static final String DISCONTENT = "(-_-)";
+    public static final String SAD = ":(";
+    public static final String FEAR = "{{ (>_<) }}";
+    public static final String CONFUSION = "(@_@;)";
+    public static final String SURPRISE = "(o_O)!";
+    public static final String IN_LOVE = "(─‿‿─)♡";
+    public static final String SLEEPY = "(=^ ◡ ^=)";
+    public static final int CALENDAR_PARAMETER_1 = 1;
+    public static final int CALENDAR_PARAMETER_2 = 2;
+    public static final int CALENDAR_PARAMETER_3 = 3;
 
     /* Method that takes three points and looks at whether they are vertices of a triangle and,
     if so, whether it is rectangular triangle.
@@ -47,10 +60,12 @@ public class Algorithms {
 
     public static void vowelsAlgorithm(char letter) {
 
-//        if (AlgorithmsHelper.vowelsAlgorithmMethod4(letter)) {
+        letter = (letter + "").toLowerCase().charAt(0);
+
+        if (AlgorithmsHelper.vowelsAlgorithmMethod4(letter)) {
 //        if (AlgorithmsHelper.vowelsAlgorithmMethod3(letter)) {
 //        if (AlgorithmsHelper.vowelsAlgorithmMethod2(letter)) {
-        if (AlgorithmsHelper.vowelsAlgorithmMethod1(letter)) {
+//        if (AlgorithmsHelper.vowelsAlgorithmMethod1(letter)) {
             System.out.println(letter + " is vowels.");
         } else {
             System.out.println(letter + " is not vowels.");
@@ -66,39 +81,38 @@ public class Algorithms {
     public static void MoodSensor() {
 
         int moodNumber = (int) (Math.random() * 10);
+        String mood = SLEEPY;
 
         switch (moodNumber) {
             case 1:
-                System.out.print(":)"); // funny
+                mood = FUNNY;
                 break;
             case 2:
-                System.out.print("(*^.^*)"); //embarrassment
+                mood = EMBARRASSMENT;
                 break;
             case 3:
-                System.out.print("(G_G)"); //very tired
+                mood = VERY_TIRED;
                 break;
             case 4:
-                System.out.print("(-_-)"); //discontent
+                mood = DISCONTENT;
                 break;
             case 5:
-                System.out.print(":("); //sad
+                mood = SAD;
                 break;
             case 6:
-                System.out.print("{{ (>_<) }}"); //fear
+                mood = FEAR;
                 break;
             case 7:
-                System.out.print("(@_@;)"); //confusion
+                mood = CONFUSION;
                 break;
             case 8:
-                System.out.print("(o_O)!");//Surprise
+                mood = SURPRISE;
                 break;
             case 9:
-                System.out.print("(─‿‿─)♡"); // in love
-                break;
-            default:
-                System.out.print("(=^ ◡ ^=)"); //sleepy
+                mood = IN_LOVE;
                 break;
         }
+        System.out.print(mood);
     }
 
     /*
@@ -108,9 +122,9 @@ public class Algorithms {
 
         if (AlgorithmsHelper.gregorianCalendarValidDate(day, month, year)) {
             System.out.printf("Today %d.%d.%d the next day: %d.%d.%d", day, month, year,
-                    AlgorithmsHelper.gregorianCalendarNextDay(day, month, year, 1),
-                    AlgorithmsHelper.gregorianCalendarNextDay(day, month, year, 2),
-                    AlgorithmsHelper.gregorianCalendarNextDay(day, month, year, 3));
+                    AlgorithmsHelper.gregorianCalendarNextDay(day, month, year, CALENDAR_PARAMETER_1),
+                    AlgorithmsHelper.gregorianCalendarNextDay(day, month, year, CALENDAR_PARAMETER_2),
+                    AlgorithmsHelper.gregorianCalendarNextDay(day, month, year, CALENDAR_PARAMETER_3));
         } else {
             System.out.println("Date is not valid");
         }
@@ -119,6 +133,29 @@ public class Algorithms {
 }
 
 class AlgorithmsHelper {
+    public static final int DRAGON_YANG_PERIOD = 200;
+    public static final int DRAGON_MID_PERIOD = 300;
+    public static final int HEAD_GROWS_YANG_PERIOD = 3;
+    public static final int HEAD_GROWS_MID_PERIOD = 1;
+    public static final int EYES_ON_HEAD = 2;
+    public static final String PATTERN = "aeyuoi";
+    public static final int JANUARY = 1;
+    public static final int FEBRUARY = 2;
+    public static final int MARCH = 3;
+    public static final int MAY = 5;
+    public static final int JULY = 7;
+    public static final int AUGUST = 8;
+    public static final int OCTOBER = 10;
+    public static final int DECEMBER = 12;
+    public static final int LEAP_YEAR_CONST_4 = 4;
+    public static final int LEAP_YEAR_CONST_400 = 400;
+    public static final int LEAP_YEAR_CONST_100 = 100;
+    public static final int LAST_DAY_31 = 31;
+    public static final int LAST_DAY_30 = 30;
+    public static final int LAST_DAY_28 = 28;
+    public static final int LAST_DAY_29 = 29;
+    public static final int FIRST_DAY_OR_MONTH = 1;
+
     //the method checks if there are no matching points
     static boolean triangleAlgorithmsIsValid(int firstPointX, int firstPointY, int secondPointsX, int secondPointsY,
                                              int thirdPointX, int thirdPointY) {
@@ -145,37 +182,35 @@ class AlgorithmsHelper {
     static int dragonAlgorithmHead(int dragonAge) {
         int numberHeads = 0;
 
-        if (dragonAge < 200) {                                      //until 200 years is growing 3 heads
-            numberHeads = 3 * dragonAge + 3;
-        } else if (dragonAge < 300) {                               // from 200 until 300 years is growing 2 heads
-            numberHeads = 3 * 201 + 2 * (dragonAge - 200);
-        } else {                                                    // from 300 years is growing 1 head
-            numberHeads = 3 * 201 + 2 * 100 + (dragonAge - 300);
+        if (dragonAge > 0) {
+            if (dragonAge < DRAGON_YANG_PERIOD) {                                      //until 200 years is growing 3 heads
+                numberHeads = HEAD_GROWS_YANG_PERIOD * dragonAge + HEAD_GROWS_YANG_PERIOD;
+            } else if (dragonAge < DRAGON_MID_PERIOD) {                               // from 200 until 300 years is growing 2 heads
+                numberHeads = HEAD_GROWS_YANG_PERIOD * (DRAGON_YANG_PERIOD + 1) -
+                        HEAD_GROWS_MID_PERIOD * DRAGON_YANG_PERIOD + HEAD_GROWS_MID_PERIOD * dragonAge;
+            } else {                                                    // from 300 years is growing 1 head
+                numberHeads = HEAD_GROWS_YANG_PERIOD * (DRAGON_YANG_PERIOD + 1) + HEAD_GROWS_MID_PERIOD *
+                        (DRAGON_MID_PERIOD - DRAGON_YANG_PERIOD) - DRAGON_MID_PERIOD + dragonAge;
+            }
         }
         return numberHeads;
+
     }
 
     //the method counts the number of dragon eyes
     static int dragonAlgorithmEyes(int numberHeads) {
-        return numberHeads * 2;
+        return numberHeads * EYES_ON_HEAD;
     }
 
     //the method checks the character on the vowel.
     static boolean vowelsAlgorithmMethod1(char letter) {
+
         switch (letter) {
-            case 'A':
             case 'a':
-            case 'Q':
-            case 'q':
-            case 'E':
             case 'e':
-            case 'Y':
             case 'y':
-            case 'U':
             case 'u':
-            case 'O':
             case 'o':
-            case 'I':
             case 'i':
                 return true;
             default:
@@ -185,147 +220,67 @@ class AlgorithmsHelper {
 
     //the method checks the character on the vowel.
     static boolean vowelsAlgorithmMethod2(char letter) {
-        switch (letter) {
-            case 65:
-            case 97:
-            case 81:
-            case 113:
-            case 69:
-            case 101:
-            case 89:
-            case 121:
-            case 85:
-            case 117:
-            case 79:
-            case 111:
-            case 73:
-            case 105:
-                return true;
-            default:
-                return false;
-        }
+        return letter == 'a' || letter == 'e' || letter == 'y' || letter == 'u' || letter == 'o' || letter == 'i';
     }
 
     //the method checks the character on the vowel.
     static boolean vowelsAlgorithmMethod3(char letter) {
-        boolean bool = false;
-        if (letter == 'A') {
-            bool = true;
-        } else if (letter == 'a') {
-            bool = true;
-        } else if (letter == 'E') {
-            bool = true;
-        } else if (letter == 'e') {
-            bool = true;
-        } else if (letter == 'Y') {
-            bool = true;
-        } else if (letter == 'y') {
-            bool = true;
-        } else if (letter == 'U') {
-            bool = true;
-        } else if (letter == 'u') {
-            bool = true;
-        } else if (letter == 'I') {
-            bool = true;
-        } else if (letter == 'i') {
-            bool = true;
-        } else if (letter == 'O') {
-            bool = true;
-        } else if (letter == 'o') {
-            bool = true;
-        } else if (letter == 'Q') {
-            bool = true;
-        } else if (letter == 'q') {
-            bool = true;
-        }
-        return bool;
+        return PATTERN.contains(letter + "");
     }
 
     //the method checks the character on the vowel.
     static boolean vowelsAlgorithmMethod4(char letter) {
-        boolean bool = false;
-        if (letter == 65) {
-            bool = true;
-        } else if (letter == 97) {
-            bool = true;
-        } else if (letter == 81) {
-            bool = true;
-        } else if (letter == 113) {
-            bool = true;
-        } else if (letter == 69) {
-            bool = true;
-        } else if (letter == 101) {
-            bool = true;
-        } else if (letter == 89) {
-            bool = true;
-        } else if (letter == 121) {
-            bool = true;
-        } else if (letter == 85) {
-            bool = true;
-        } else if (letter == 117) {
-            bool = true;
-        } else if (letter == 79) {
-            bool = true;
-        } else if (letter == 111) {
-            bool = true;
-        } else if (letter == 73) {
-            bool = true;
-        } else if (letter == 105) {
-            bool = true;
-        }
-        return bool;
+        return (letter + "").equals("a") || (letter + "").equals("e") ||
+                (letter + "").equals("y") || (letter + "").equals("u") ||
+                (letter + "").equals("o") || (letter + "").equals("i");
     }
 
     //the method calculates the following date
     static int gregorianCalendarNextDay(int day, int month, int year, int choose) {
 
         day++;
-        boolean leapYear = false;
-        //condition of leap year
-        if (year % 4 == 0) {
-            leapYear = year % 400 == 0 || year % 100 != 0;
-        }
+        boolean leapYear = isLeapYear(year);
 
 // days in month:
 //            2 --> 29 days
 //            1, 3, 5, 7, 8, 10, 12  - 31 days
 //            4, 6, 9, 11 - 30 days
         switch (month) {
-            case 2:
+            case FEBRUARY:
                 if (leapYear) {
-                    if (day > 29) {
-                        day = 1;
+                    if (day > LAST_DAY_29) {
+                        day = FIRST_DAY_OR_MONTH;
                         month++;
                     }
                 } else {
-                    if (day > 28) {
-                        day = 1;
+                    if (day > LAST_DAY_28) {
+                        day = FIRST_DAY_OR_MONTH;
                         month++;
                     }
                 }
                 break;
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                if (day > 31) {
-                    day = 1;
+            case JANUARY:
+            case MARCH:
+            case MAY:
+            case JULY:
+            case AUGUST:
+            case OCTOBER:
+            case DECEMBER:
+                if (day > LAST_DAY_31) {
+                    day = FIRST_DAY_OR_MONTH;
                     month++;
                 }
                 break;
             default:
-                if (day > 30) {
-                    day = 1;
+                if (day > LAST_DAY_30) {
+                    day = FIRST_DAY_OR_MONTH;
                     month++;
                 }
                 break;
         }
 
-        if (month > 12) {
-            month = 1;
+        if (month > DECEMBER) {
+            month = FIRST_DAY_OR_MONTH;
             year++;
         }
 
@@ -344,49 +299,49 @@ class AlgorithmsHelper {
     //the method checks the correctness of the date
     static boolean gregorianCalendarValidDate(int day, int month, int year) {
 
-        boolean leapYear = false;
-        //condition of leap year
-        if (year % 4 == 0) {
-            leapYear = year % 400 == 0 || year % 100 != 0;
-        }
+        boolean leapYear = isLeapYear(year);
         if (year > 0) {
-            if ((month > 0) && (month <= 12)) {
+            if ((month >= JANUARY) && (month <= DECEMBER)) {
 //                 days in month:
 //                  2 --> 29 days
 //                  1, 3, 5, 7, 8, 10, 12  - 31 days
 //                  4, 6, 9, 11 - 30 days
                 switch (month) {
-                    case 2:
+                    case FEBRUARY:
                         if (leapYear) {
-                            if ((day > 0) && (day <= 29)) {
+                            if ((day >= FIRST_DAY_OR_MONTH) && (day <= LAST_DAY_29)) {
                                 return true;
                             }
                         } else {
-                            if ((day > 0) && (day <= 28)) {
+                            if ((day >= FIRST_DAY_OR_MONTH) && (day <= LAST_DAY_28)) {
                                 return true;
                             }
                         }
                         break;
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        if ((day > 0) && (day <= 31)) {
+                    case JANUARY:
+                    case MARCH:
+                    case MAY:
+                    case JULY:
+                    case AUGUST:
+                    case OCTOBER:
+                    case DECEMBER:
+                        if ((day >= FIRST_DAY_OR_MONTH) && (day <= LAST_DAY_31)) {
                             return true;
                         }
                         break;
                     default:
-                        if ((day > 0) && (day <= 30)) {
+                        if ((day >= FIRST_DAY_OR_MONTH) && (day <= LAST_DAY_30)) {
                             return true;
                         }
                         break;
                 }
             }
         }
-
         return false;
+    }
+
+    //condition of leap year
+    private static boolean isLeapYear(int year) {
+        return (year % LEAP_YEAR_CONST_4 == 0) && (year % LEAP_YEAR_CONST_400 == 0 || year % LEAP_YEAR_CONST_100 != 0);
     }
 }
