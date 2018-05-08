@@ -160,4 +160,16 @@ public class ArrayClass {
         return array;
     }
 
+    public static double positiveNumberMultiplierCalculator(double[] array){
+        double multiplier = 1;
+
+        for (int i = 0; i < array.length; i++){
+            if (array[i] >= 0){
+                multiplier *= array[i];
+            }
+        }
+
+        return multiplier;
+    }
+
 }
