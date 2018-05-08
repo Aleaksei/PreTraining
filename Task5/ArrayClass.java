@@ -149,8 +149,15 @@ public class ArrayClass {
     }
 
     public static double[] reverse(double[] array){
-        double[] workArray = {0};
-        return workArray;
+
+        for (int i = 0; i < array.length / 2; i++){
+
+            double tmp = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length - 1 - i] = tmp;
+        }
+
+        return array;
     }
 
 }
