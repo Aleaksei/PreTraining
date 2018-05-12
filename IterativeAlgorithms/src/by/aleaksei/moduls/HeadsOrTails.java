@@ -21,7 +21,7 @@ public class HeadsOrTails {
         return countHeads;
     }
 
-    public static void coinResulter(int numberShots) {
+    public static void coinWorker(int numberShots) {
 
         int countHeads = throwCoin(numberShots);
         System.out.printf("The coin was thrown %d times.\n Heads: %d.\n Tails: %d.", numberShots,
