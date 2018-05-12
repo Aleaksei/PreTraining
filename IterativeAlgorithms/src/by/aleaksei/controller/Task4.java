@@ -10,7 +10,7 @@ public class Task4 {
     public static void main(String[] args) {
 
 //        int numberShots = 1000;
-//        HeadsOrTails.throwCoin(numberShots);
+//        HeadsOrTails.coinWorker(numberShots);
 
 //        int number = 176481;
 //        NaturalNumberAlgorithms.maxElement(number);
