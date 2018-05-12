@@ -148,9 +148,9 @@ public class ArrayClass {
         return position;
     }
 
-    public static double[] reverse(double[] array){
+    public static double[] reverse(double[] array) {
 
-        for (int i = 0; i < array.length / 2; i++){
+        for (int i = 0; i < array.length / 2; i++) {
 
             double tmp = array[i];
             array[i] = array[array.length - 1 - i];
@@ -160,16 +160,28 @@ public class ArrayClass {
         return array;
     }
 
-    public static double positiveNumberMultiplierCalculator(double[] array){
+    public static double positiveNumberMultiplierCalculator(double[] array) {
         double multiplier = 1;
 
-        for (int i = 0; i < array.length; i++){
-            if (array[i] >= 0){
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] >= 0) {
                 multiplier *= array[i];
             }
         }
 
         return multiplier;
+    }
+
+    public static double sumElements(double[] array) {
+
+        double sum = 0;
+        double min = findMinElement(array);
+
+        for (int i = 0; array[i] != min; i++) {
+            sum += Math.abs(array[i]);
+        }
+
+        return sum;
     }
 
 }
