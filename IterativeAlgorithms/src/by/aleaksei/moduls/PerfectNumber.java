@@ -22,7 +22,7 @@ public class PerfectNumber {
     //method which checks the perfect condition
     private static boolean isPerfect(int number) {
         
-        int sumDivisor = sumDivisor(number);
+        int sumDivisor = sumDivisorCalculator(number);
         
         return (sumDivisor == number);
     }
