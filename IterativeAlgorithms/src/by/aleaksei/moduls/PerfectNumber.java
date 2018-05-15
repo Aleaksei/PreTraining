@@ -7,27 +7,24 @@ package by.aleaksei.moduls;
 public class PerfectNumber {
 
     //method which calculates the sum of all divisors
-    private static int sumDivisor(int number) {
+    private static int sumDivisorCalculator(int number) {
 
-        int divisor = 1, sumDivisor = 0;
+        int sumDivisor = 1;
 
-        while (divisor <= (number / 2)) {
-
+        for(int divisor = 2; divisor <= (number / 2); divisor++) {
             if (number % divisor == 0) {
                 sumDivisor += divisor;
             }
-            divisor++;
         }
         return sumDivisor;
     }
 
     //method which checks the perfect condition
     private static boolean isPerfect(int number) {
-
+        
         int sumDivisor = sumDivisor(number);
-
+        
         return (sumDivisor == number);
-
     }
 
     public static void perfectChecking(int number) {
@@ -37,7 +34,5 @@ public class PerfectNumber {
         } else {
             System.out.print("Number is not natural.");
         }
-
     }
-
 }
