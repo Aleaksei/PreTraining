@@ -148,7 +148,7 @@ public class ArrayClass {
         return position;
     }
 
-    public static double[] reverse(double[] array) {
+    public static void reverse(double[] array) {
 
         for (int i = 0; i < array.length / 2; i++) {
 
@@ -156,8 +156,6 @@ public class ArrayClass {
             array[i] = array[array.length - 1 - i];
             array[array.length - 1 - i] = tmp;
         }
-
-        return array;
     }
 
     public static double positiveNumberMultiplierCalculator(double[] array) {
