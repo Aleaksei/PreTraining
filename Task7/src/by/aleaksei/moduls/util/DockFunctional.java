@@ -1,4 +1,4 @@
-package by.aleaksei.moduls.util;
+package by.aleaksei.util;
 
 import by.aleaksei.moduls.entities.Ship;
 import by.aleaksei.moduls.entities.enums.CargoShipClass;
@@ -7,17 +7,13 @@ import by.aleaksei.moduls.entities.enums.ShipType;
 
 public interface DockFunctional {
 
-    public void addShip();
+    public void addShip(Ship ship);
 
     public Ship findShipByName(String name);
 
     public Ship[] getAllShip();
 
     public Ship getShipBuIndex(int index);
-
-    public Ship[] findShipByClass(CargoShipClass cargoShipClass);
-
-    public Ship[] findShipByClass(PassengerShipClass passengerShipClass);
 
     public Ship[] findShipByType(ShipType shipType);
 
