@@ -4,23 +4,23 @@ import by.aleaksei.moduls.entities.Ship;
 
 import java.util.NoSuchElementException;
 
-public class Stack {
 
+public class Queue {
 
     private static final int DEFAULT = 2;
     private int currentNumber = 0;
     private Ship[] mass;
 
-    public Stack(int count) {
+    public Queue(int count) {
         mass = new Ship[count];
     }
 
-    public Stack(Stack stack) {
-        this.mass = stack.getMass();
-        this.currentNumber = stack.currentNumber;
+    public Queue(Queue queue) {
+        this.mass = queue.getMass();
+        this.currentNumber = queue.currentNumber;
     }
 
-    public Stack() {
+    public Queue() {
         mass = new Ship[DEFAULT];
     }
 
@@ -33,20 +33,22 @@ public class Stack {
     }
 
 
-    public void push(Ship ship) {
+    public void enqueue(Ship ship) {
         if (currentNumber < mass.length)
             mass[currentNumber] = ship;
         currentNumber++;
     }
 
-    public Ship pop() {
+    public Ship dequeue() {
 
         if (currentNumber == 0) {
             throw new NoSuchElementException();
         }
-        Ship work = mass[currentNumber];
-        mass[currentNumber] = null;
+        Ship work = mass[0];
+        Ship[] workMass = new Ship[mass.length];
+        System.arraycopy(mass, 1, workMass, 0, currentNumber);
         currentNumber--;
+        mass = workMass;
         return work;
     }
 
@@ -55,7 +57,7 @@ public class Stack {
         if (currentNumber == 0) {
             throw new NoSuchElementException();
         }
-        return mass[currentNumber];
+        return mass[0];
     }
 
 
@@ -70,4 +72,5 @@ public class Stack {
     public boolean isFull() {
         return currentNumber == mass.length;
     }
+
 }
